@@ -16,7 +16,7 @@
     "nodemon": "^1.19.4"
   },
   "scripts": {
-    "start": "node src/serve.js",
+    "start": "node src/server.js",
     "dev": "nodemon src/server.js"
   }
 }
