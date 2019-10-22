@@ -28,5 +28,5 @@ const storateTypes = {
 }
 
 module.exports = {
-    storage: storateTypes.local
+    storage: storateTypes.s3
 }
