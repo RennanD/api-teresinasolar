@@ -13,7 +13,8 @@ const ProjectSchema = new Schema({
     descs: [{
         type: String,
         required: true
-    }]
+    }],
+    url: String
 
 },{
     timestamps: true,
@@ -22,8 +23,10 @@ const ProjectSchema = new Schema({
     }
 })
 
-ProjectSchema.virtual('file_url').get(function(){
-    return `${process.env.URL}/files/${this.thumbnail}`
+ProjectSchema.pre('save', function() {
+    if(!this.url){
+        this.url = `${process.env.URL}/files/${this.thumbnail}`
+    }
 })
 
 module.exports = model('Project', ProjectSchema)

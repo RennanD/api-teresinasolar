@@ -22,7 +22,7 @@ module.exports = {
 
     async store(req, res) {
 
-        const { filename: thumbnail } = req.file
+        const { key: thumbnail,location: url = "" } = req.file
         
         const { title, descs } = req.body
 
@@ -31,7 +31,8 @@ module.exports = {
             await Projetc.create({
                 thumbnail,
                 title,
-                descs: descs.split('-').map(desc => desc.trim())
+                descs: descs.split('-').map(desc => desc.trim()),
+                url
             })
 
             return res.json({succses: "Projeto cadastrado com sucesso"})
