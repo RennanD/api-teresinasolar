@@ -71,6 +71,28 @@ module.exports = {
 
         }
 
+    },
+
+    async destroy(req, res) {
+
+        const { id } =  req.params
+
+        try {
+            
+            const project = await Projetc.findById(id)
+
+            if(!project) return res.json({data: "O Projeto não existe na base de dados"})
+
+            await Projetc.findByIdAndDelete(id)
+
+            return res.json({succses: "Deletado com sucesso!"})
+
+        } catch (err) {
+            
+            return res.json({error: "Não foi posivel excluir o projeto!"})
+
+        }
+
     }
 
 }
